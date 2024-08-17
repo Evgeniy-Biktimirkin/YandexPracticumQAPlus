@@ -1,8 +1,7 @@
 import configuration
 import requests
 import data
-
-
+import blasted_order_check_test
 
 
 
@@ -13,9 +12,6 @@ def post_new_order(body):
 
 
 
-def get_order():
-    response_track = post_new_order(data.order_body)
-    track = response_track.json()['track']
-
+def get_order(track):
     return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER + "?t=" + str(track)
                         )

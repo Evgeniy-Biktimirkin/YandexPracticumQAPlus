@@ -1,7 +1,16 @@
+import data
 import create_save_track_order
 
+
+def dono_what_for():
+    response_track = create_save_track_order.post_new_order(data.order_body)
+    track = response_track.json()['track']
+    return track
+
+
 def positive_assert():
-    status_response = create_save_track_order.get_order()
+    track = dono_what_for()
+    status_response = create_save_track_order.get_order(track)
     assert status_response.status_code == 200
 
 
